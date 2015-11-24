@@ -3,8 +3,16 @@
     android:layout_height="match_parent"
     tools:context="grupo6uis.dueloentreleyendas.dueloApp.SeleccionarPersonajeFragment">
 
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/personaje_list"
+        android:name="grupo6uis.dueloentreleyendas.dueloApp.SeleccionarPersonajeFragment" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" tools:context=".SeleccionarPersonajeActivity"
+        tools:layout="@android:layout/list_content" />
+
     <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+    <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

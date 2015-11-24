@@ -5,4 +5,12 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_estadisticas">EstadisticasActivity</string>
+
+    <string-array name="options">
+        <item>Amumu</item>
+        <item>Amumu2</item>
+        <item>Amumu3</item>
+    </string-array>
+
+
 </resources>
