@@ -9,5 +9,8 @@ public class Personaje implements Serializable {
     Long id;
 
 
+    public Long getId() {
+        return id;
+    }
 }
 

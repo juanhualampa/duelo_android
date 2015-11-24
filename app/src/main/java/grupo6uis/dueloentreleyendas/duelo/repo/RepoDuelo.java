@@ -42,9 +42,13 @@ public class RepoDuelo {
         RepoDuelo.getInstance().agregarPersonaje(new Personaje());
     }
 
+    private void agregarPersonaje(Personaje personaje) {
+        personajes.add(personaje);
+    }
+
     public Personaje getPersonaje(Long id) {
         for (Personaje personaje : this.personajes) {
-            if (personajes.getId().equals(id)) {
+            if (personaje.getId().equals(id)) {
                 return personaje;
             }
         }
