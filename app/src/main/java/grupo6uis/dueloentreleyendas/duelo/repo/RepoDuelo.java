@@ -2,6 +2,7 @@ package grupo6uis.dueloentreleyendas.duelo.repo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import grupo6uis.dueloentreleyendas.duelo.domain.Personaje;
@@ -12,6 +13,7 @@ import grupo6uis.dueloentreleyendas.duelo.domain.Personaje;
 public class RepoDuelo {
 
     private List<Personaje> personajes;
+    private static final int MAX_RESULTS = 10;
 
     /**
      * SINGLETON
@@ -53,6 +55,23 @@ public class RepoDuelo {
             }
         }
         return null;
+    }
+
+    public List<Personaje> getPersonajes(String titulo) {
+        return getPersonajes(titulo, MAX_RESULTS);
+    }
+
+    public List<Personaje> getPersonajes(String nombre, int max) {
+        Iterator<Personaje> it = personajes.iterator();
+        List<Personaje> result = new ArrayList<Personaje>();
+        while (it.hasNext() && max > 0) {
+            Personaje personaje = it.next();
+            max--;
+            if (nombre == null || personaje.getNombre().toUpperCase().contains(nombre.toUpperCase())) {
+                result.add(personaje);
+            }
+        }
+        return result;
     }
 
 }
