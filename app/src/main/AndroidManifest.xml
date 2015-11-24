@@ -20,6 +20,11 @@
         </activity>
         <activity android:name=".dueloApp.PersonajeSeleccionadoActivity" >
         </activity>
+        <activity
+            android:name=".dueloApp.EstadisticasActivity"
+            android:label="@string/title_activity_estadisticas"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>
