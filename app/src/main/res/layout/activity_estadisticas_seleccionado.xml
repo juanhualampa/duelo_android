@@ -4,25 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".PersonajeSeleccionadoActivity">
-
-    <ListView
-        android:id="@+id/firstListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-    />
-
-    <ListView
-        android:id="@+id/secondListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-    />
+    tools:context=".EstadisticasActivity">
 
     <TextView
-        android:id="@+id/secondTextbox"
+        android:id="@+id/nombrePersonaje"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
-
 
 </LinearLayout>
