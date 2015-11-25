@@ -2,10 +2,10 @@
     <string name="app_name">DueloEntreLeyendas</string>
     <string name="action_settings">Settings</string>
 
-<!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_estadisticas">EstadisticasActivity</string>
-    <string name="buscar">BUSCAR </string>
+    <string name="buscar">BUSCAR</string>
+    <string name="stats">Estadisticas</string>
 
 
 </resources>

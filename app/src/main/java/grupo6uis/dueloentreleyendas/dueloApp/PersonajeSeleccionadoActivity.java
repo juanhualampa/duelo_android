@@ -79,7 +79,8 @@ public class PersonajeSeleccionadoActivity extends AppCompatActivity {
         }
 
     }
-
+/*
+TODO OLD
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -95,4 +96,18 @@ public class PersonajeSeleccionadoActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+*/
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.home:
+                navigateUpTo(new Intent(this, SeleccionarPersonajeActivity.class));
+                return true;
+            case R.id.stats:
+                startActivity(new Intent(this, EstadisticasActivity.class));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
