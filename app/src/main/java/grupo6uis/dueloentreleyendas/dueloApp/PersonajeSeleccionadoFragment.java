@@ -50,13 +50,13 @@ public class PersonajeSeleccionadoFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_personaje_seleccionado, container, false);
 
         // Show the dummy content as text in a TextView.
-        if (personaje != null) {
-            ((TextView) rootView.findViewById(R.id.pelicula_genero)).setText(pelicula.getDescripcionGenero());
-            ImageView imgGenero = ((ImageView) rootView.findViewById(R.id.imgGenero));
-            imgGenero.setImageDrawable(getResources().getDrawable(new GeneroAdapter().getIconoGenero(pelicula)));
-            ((TextView) rootView.findViewById(R.id.pelicula_actores)).setText(pelicula.getActores());
-            ((TextView) rootView.findViewById(R.id.pelicula_sinopsis)).setText(pelicula.getSinopsis());
-        }
+        //if (personaje != null) {
+        //   ((TextView) rootView.findViewById(R.id.pelicula_genero)).setText(pelicula.getDescripcionGenero());
+        //    ImageView imgGenero = ((ImageView) rootView.findViewById(R.id.imgGenero));
+        //    imgGenero.setImageDrawable(getResources().getDrawable(new GeneroAdapter().getIconoGenero(pelicula)));
+        //    ((TextView) rootView.findViewById(R.id.pelicula_actores)).setText(pelicula.getActores());
+        //    ((TextView) rootView.findViewById(R.id.pelicula_sinopsis)).setText(pelicula.getSinopsis());
+        //}
 
         return rootView;
     }

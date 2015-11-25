@@ -5,11 +5,16 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_estadisticas">EstadisticasActivity</string>
+    <string name="filtrar">Filtrar</string>
 
     <string-array name="options">
         <item>Amumu</item>
-        <item>Amumu2</item>
-        <item>Amumu3</item>
+        <item>Axe</item>
+        <item>Ashe</item>
+        <item>Master Yi</item>
+        <item>Sniper</item>
+        <item>Katarina</item>
+        <item>Techies</item>
     </string-array>
 
 

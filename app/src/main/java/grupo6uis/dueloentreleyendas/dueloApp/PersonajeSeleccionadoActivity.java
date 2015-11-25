@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import grupo6uis.dueloentreleyendas.R;
 
@@ -29,6 +30,12 @@ public class PersonajeSeleccionadoActivity extends AppCompatActivity {
             }
         });
 
+        Intent intent = getIntent();
+        String personaje = intent.getStringExtra("personaje");
+        TextView textView = new TextView(this);
+        textView.setText(personaje);
+        setContentView(textView);
+
         // Show the Up button in the action bar.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -49,9 +56,9 @@ public class PersonajeSeleccionadoActivity extends AppCompatActivity {
                     getIntent().getSerializableExtra(PersonajeSeleccionadoFragment.ARG_ITEM_ID));
             PersonajeSeleccionadoFragment fragment = new PersonajeSeleccionadoFragment();
             fragment.setArguments(arguments);
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.pelicula_detail_container, fragment)
-                    .commit();
+            //getSupportFragmentManager().beginTransaction()
+                    //.add(R.id.pelicula_detail_container, fragment)
+                    //.commit();
         }
     }
 

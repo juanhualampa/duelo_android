@@ -6,10 +6,17 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import grupo6uis.dueloentreleyendas.R;
 import grupo6uis.dueloentreleyendas.duelo.domain.Personaje;
@@ -56,10 +63,55 @@ public class SeleccionarPersonajeActivity extends AppCompatActivity implements S
                     .findFragmentById(R.id.personaje_list))
                     .setActivateOnItemClick(true);
         }
-
+        filtrarPersonajes();
+        verPersonajeElegido();
     }
 
-    @Override
+    private void filtrarPersonajes(){
+    //para empezar
+        EditText inputSearch = (EditText) findViewById(R.id.idFiltrarEditText);
+        ListView listaPersonajes = (ListView) findViewById(R.id.personajeslistView);
+        //final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.personaje);
+        final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.options, R.layout.personaje);
+        listaPersonajes.setAdapter(adapter);
+        inputSearch.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3){
+            // When user changed the Text
+                adapter.getFilter().filter(cs);
+        }
+            @Override
+            public void afterTextChanged(Editable arg0) {}
+        });
+    }
+
+
+    private void verPersonajeElegido() {
+        ListView listaPersonajes = (ListView) findViewById(R.id.personajeslistView);
+
+        listaPersonajes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(SeleccionarPersonajeActivity.this, PersonajeSeleccionadoActivity.class);
+                TextView persElegido = (TextView) view;
+
+                String pers = persElegido.getText().toString();
+                intent.putExtra("personaje", pers);
+
+                startActivity(intent);
+            }
+        });
+    }
+
+
+@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_seleccionar_personaje, menu);
@@ -78,7 +130,7 @@ public class SeleccionarPersonajeActivity extends AppCompatActivity implements S
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     //TODO pelicula_detail_container está en layout/activity_pelicula_detail.xml
-                    .replace(R.id.pelicula_detail_container, fragment)
+                    //.replace(R.id.pelicula_detail_container, fragment)
                     .commit();
 
         } else {
