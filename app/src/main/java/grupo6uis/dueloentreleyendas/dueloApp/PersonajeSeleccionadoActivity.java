@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import grupo6uis.dueloentreleyendas.R;
 
 public class PersonajeSeleccionadoActivity extends AppCompatActivity {
@@ -19,33 +21,34 @@ public class PersonajeSeleccionadoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_personaje_seleccionado);
         Intent intent = getIntent();
         String personaje = intent.getStringExtra("personaje");
         String[] especialidades = intent.getStringArrayExtra("especialidades");
         String[] debilidades = intent.getStringArrayExtra("debilidades");
         String mejorPosicion = intent.getStringExtra("mejorPosicion");
-        TextView textView = new TextView(this);
-        textView.setText(personaje);
-        setContentView(textView);
 
-        ListView listView = new ListView(this);
+
+        TextView textView = (TextView) findViewById(R.id.firstTextbox);
+        textView.setText(personaje);
+
+        ListView listView = (ListView) findViewById(R.id.firstListView);
         ArrayAdapter<String> especialidadesAdapter = new ArrayAdapter<String>(
                 this,android.R.layout.simple_list_item_1,
                 especialidades
         );
         listView.setAdapter(especialidadesAdapter);
 
-        ListView listView2 = new ListView(this);
+        ListView listView2 = (ListView) findViewById(R.id.secondListView);
         ArrayAdapter<String> debilidadesAdapter = new ArrayAdapter<String>(
                 this,android.R.layout.simple_list_item_1,
                 debilidades
         );
-        listView.setAdapter(debilidadesAdapter);
 
-        TextView textView2 = new TextView(this);
-        textView.setText(mejorPosicion);
-        setContentView(textView);
+        listView2.setAdapter(debilidadesAdapter);
+
+        TextView textView2 = (TextView) findViewById(R.id.secondTextbox);
+        textView2.setText(mejorPosicion);
 
         // Show the Up button in the action bar.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
