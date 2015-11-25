@@ -52,7 +52,7 @@ public class SeleccionarPersonajeActivity extends AppCompatActivity implements S
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        if (findViewById(R.id.pelicula_detail_container) != null) {
+       /* if (findViewById(R.id.pelicula_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-large and
             // res/values-sw600dp). If this view is present, then the
@@ -64,7 +64,7 @@ public class SeleccionarPersonajeActivity extends AppCompatActivity implements S
             ((SeleccionarPersonajeFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.personaje_list))
                     .setActivateOnItemClick(true);
-        }
+        }*/
         filtrarPersonajes();
         verPersonajeElegido();
     }

@@ -6,20 +6,6 @@
     android:orientation="vertical"
     tools:context=".PersonajeSeleccionadoActivity">
 
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
-        android:layout_gravity="right" />
-
-    <TextView
-        android:id="@+id/firstTextbox"
-        android:text="TEXTO firstTextbox"
-        android:layout_width="match_parent"
-        android:layout_height="62dp" />
-
     <ListView
         android:id="@+id/firstListView"
         android:layout_width="match_parent"

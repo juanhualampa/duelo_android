@@ -35,7 +35,7 @@ public class PersonajeSeleccionadoFragment extends Fragment {
             personaje = (Personaje) getArguments().get(ARG_ITEM_ID);
 
             Activity activity = this.getActivity();
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
+            CollapsingToolbarLayout appBarLayout = null;//(CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
                 appBarLayout.setTitle(personaje.getNombre());
             } else {
