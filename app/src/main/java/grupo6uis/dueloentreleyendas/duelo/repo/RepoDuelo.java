@@ -1,6 +1,7 @@
 package grupo6uis.dueloentreleyendas.duelo.repo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -40,8 +41,38 @@ public class RepoDuelo {
      *
      *   Inicializacion Juego de Datos
      */
+
+    private Personaje conDatos(String nombre, String[] especialidades ,String[] debilidades, String mejorPosicion){
+        Personaje person = new Personaje();
+        person.setNombre(nombre);
+        person.setEspecialidades(especialidades);
+        person.setDebilidades(debilidades);
+        person.setMejorPosicion(mejorPosicion);
+        return person;
+    }
+
+    private ArrayList<Personaje> damePersonajes(){
+        String[] especialidades = {"Bailar","Ni idea"};
+        String[] debilidades = {"Descansar","Ni idea"};
+        Personaje unPersonaje1 = this.conDatos("Amumu",especialidades,debilidades,"Bottom") ;
+        Personaje unPersonaje2 = this.conDatos("Axe",especialidades,debilidades,"Bottom");
+        Personaje unPersonaje3 = this.conDatos("Ashe",especialidades,debilidades,"Bottom");
+        Personaje unPersonaje4 = this.conDatos("Master Yi",especialidades,debilidades,"Bottom") ;
+        Personaje unPersonaje5 = this.conDatos("Sniper",especialidades,debilidades,"Bottom") ;
+        Personaje unPersonaje6 = this.conDatos("Katarina",especialidades,debilidades,"Bottom") ;
+        Personaje unPersonaje7 = this.conDatos("Techies",especialidades,debilidades,"Bottom") ;
+
+        return new ArrayList<>(Arrays.asList(
+                unPersonaje1,unPersonaje2,unPersonaje3,unPersonaje4,unPersonaje5,unPersonaje6,unPersonaje7
+        ));
+
+    }
+
     private void init() {
-        RepoDuelo.getInstance().agregarPersonaje(new Personaje());
+        for ( Personaje p :this.damePersonajes()){
+            RepoDuelo.getInstance().agregarPersonaje(p);
+        }
+
     }
 
     private void agregarPersonaje(Personaje personaje) {
@@ -60,6 +91,23 @@ public class RepoDuelo {
     public List<Personaje> getPersonajes(String titulo) {
         return getPersonajes(titulo, MAX_RESULTS);
     }
+
+    public List<Personaje> getPersonajes(){
+        return this.personajes;
+    }
+
+    public Personaje getPersonaje(String nombreP){
+        Iterator<Personaje> it = personajes.iterator();
+        Personaje res = null;
+        while (it.hasNext()) {
+            Personaje personaje = it.next();
+            if (personaje.getNombre() == nombreP) {
+                res = personaje;
+            }
+        }
+        return res;
+    }
+
 
     public List<Personaje> getPersonajes(String nombre, int max) {
         Iterator<Personaje> it = personajes.iterator();

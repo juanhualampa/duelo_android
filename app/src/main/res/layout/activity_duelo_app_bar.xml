@@ -26,7 +26,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/frameLayout">
-        <include layout="@layout/activity_seleccionar_personaje"></include>
+        <include layout="@layout/activity_seleccionar_personaje"/>
     </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

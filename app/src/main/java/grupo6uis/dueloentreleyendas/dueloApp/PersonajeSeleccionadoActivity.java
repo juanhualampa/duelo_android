@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import grupo6uis.dueloentreleyendas.R;
@@ -20,8 +22,29 @@ public class PersonajeSeleccionadoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String personaje = intent.getStringExtra("personaje");
+        String[] especialidades = intent.getStringArrayExtra("especialidades");
+        String[] debilidades = intent.getStringArrayExtra("debilidades");
+        String mejorPosicion = intent.getStringExtra("mejorPosicion");
         TextView textView = new TextView(this);
         textView.setText(personaje);
+        setContentView(textView);
+
+        ListView listView = new ListView(this);
+        ArrayAdapter<String> especialidadesAdapter = new ArrayAdapter<String>(
+                this,android.R.layout.simple_list_item_1,
+                especialidades
+        );
+        listView.setAdapter(especialidadesAdapter);
+
+        ListView listView2 = new ListView(this);
+        ArrayAdapter<String> debilidadesAdapter = new ArrayAdapter<String>(
+                this,android.R.layout.simple_list_item_1,
+                debilidades
+        );
+        listView.setAdapter(debilidadesAdapter);
+
+        TextView textView2 = new TextView(this);
+        textView.setText(mejorPosicion);
         setContentView(textView);
 
         // Show the Up button in the action bar.

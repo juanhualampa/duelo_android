@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import grupo6uis.dueloentreleyendas.R;
 import grupo6uis.dueloentreleyendas.duelo.domain.Personaje;
+import grupo6uis.dueloentreleyendas.duelo.repo.RepoDuelo;
 
 /**
  * An activity representing a list of Personajes. This activity
@@ -40,6 +41,7 @@ import grupo6uis.dueloentreleyendas.duelo.domain.Personaje;
 public class SeleccionarPersonajeActivity extends AppCompatActivity implements SeleccionarPersonajeFragment.Callbacks {
 
     private boolean mTwoPane;
+    private RepoDuelo repo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,15 +72,14 @@ public class SeleccionarPersonajeActivity extends AppCompatActivity implements S
     private void filtrarPersonajes(){
     //para empezar
         EditText inputSearch = (EditText) findViewById(R.id.idFiltrarEditText);
+        repo = RepoDuelo.getInstance();
         ListView listaPersonajes = (ListView) findViewById(R.id.personajeslistView);
-        //final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.personaje);
-        final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.options, R.layout.personaje);
+        final ArrayAdapter<Personaje> adapter = new ArrayAdapter<Personaje>(this,R.layout.personaje,repo.getPersonajes());
         listaPersonajes.setAdapter(adapter);
         inputSearch.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -100,11 +101,12 @@ public class SeleccionarPersonajeActivity extends AppCompatActivity implements S
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(SeleccionarPersonajeActivity.this, PersonajeSeleccionadoActivity.class);
-                TextView persElegido = (TextView) view;
-
-                String pers = persElegido.getText().toString();
-                intent.putExtra("personaje", pers);
-
+                String persElegido = ((TextView) view).getText().toString();
+                Personaje pers = repo.getPersonaje(persElegido);
+                intent.putExtra("personaje", pers.getNombre());
+                intent.putExtra("especialidades",pers.getEspecialidades());
+                intent.putExtra("debilidades",pers.getDebilidades());
+                intent.putExtra("mejorPosicion",pers.getMejorPosicion());
                 startActivity(intent);
             }
         });
