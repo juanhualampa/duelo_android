@@ -18,9 +18,18 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import grupo6uis.dueloentreleyendas.R;
+import grupo6uis.dueloentreleyendas.duelo.adapter.PersonajeAdapter;
 import grupo6uis.dueloentreleyendas.duelo.domain.Personaje;
 import grupo6uis.dueloentreleyendas.duelo.repo.RepoDuelo;
+import grupo6uis.dueloentreleyendas.duelo.service.DueloService;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.GsonConverterFactory;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 /**
  * An activity representing a list of Personajes. This activity
@@ -42,6 +51,7 @@ public class SeleccionarPersonajeActivity extends AppCompatActivity implements S
 
     private boolean mTwoPane;
     private RepoDuelo repo;
+    private DueloService dueloService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +61,22 @@ public class SeleccionarPersonajeActivity extends AppCompatActivity implements S
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+
+        String BASE_URL = "http://10.0.2.2:8080/videoclub-ui-grails-homes-xtend/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        dueloService = retrofit.create(DueloService.class);
+
+        this.pedirPersonajes();
 
        /* if (findViewById(R.id.pelicula_detail_container) != null) {
             // The detail container view will be present only in the
@@ -69,10 +95,36 @@ public class SeleccionarPersonajeActivity extends AppCompatActivity implements S
         verPersonajeElegido();
     }
 
+    private void pedirPersonajes(){
+        //HACER UN GET
+        Call<List<Personaje>> call = dueloService.getPersonajes();
+        call.enqueue(new Callback<List<Personaje>>() {
+            @Override
+            public void onResponse(Response<List<Personaje>> response, Retrofit retrofit) {
+                List<Personaje> peliculas = response.body();
+
+                setListAdapter(new PersonajeAdapter(
+                        getActivity(),
+                        peliculas));
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                t.printStackTrace();
+                Log.e("PersonajesApp", t.getMessage());
+            }
+        });
+
+
+    }
+
+
+
     private void filtrarPersonajes(){
     //para empezar
         EditText inputSearch = (EditText) findViewById(R.id.idFiltrarEditText);
-        repo = RepoDuelo.getInstance();
+        //repo = RepoDuelo.getInstance();
         ListView listaPersonajes = (ListView) findViewById(R.id.personajeslistView);
         final ArrayAdapter<Personaje> adapter = new ArrayAdapter<Personaje>(this,R.layout.personaje,repo.getPersonajes());
         listaPersonajes.setAdapter(adapter);

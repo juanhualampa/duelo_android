@@ -21,9 +21,7 @@ public class PersonajeSeleccionadoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.personaje_seleccionado_app_bar);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
-
         Intent intent = getIntent();
         personaje = intent.getStringExtra("personaje");
         String[] especialidades = intent.getStringArrayExtra("especialidades");
