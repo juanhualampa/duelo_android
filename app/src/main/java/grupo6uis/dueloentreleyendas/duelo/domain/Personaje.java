@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Juan on 24-Nov-15.
  */
 public class Personaje implements Serializable {
-    Long id;
+    private int id;
     private String nombre;
     private String[] especialidades;
     private String[] debilidades;
@@ -39,8 +39,16 @@ public class Personaje implements Serializable {
 
     public String getMejorPosicion(){return this.mejorPosicion;  }
 
-    public Long getId() {
-        return id;
+    public Personaje(int id, String nombre){
+        this.id = id;
+        this.nombre = nombre;
+    }
+
+    public Personaje(){
+    }
+
+    public int getId() {
+        return this.id;
     }
 
     public String getNombre() {

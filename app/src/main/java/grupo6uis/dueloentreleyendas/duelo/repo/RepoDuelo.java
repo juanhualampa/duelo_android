@@ -79,9 +79,9 @@ public class RepoDuelo {
         personajes.add(personaje);
     }
 
-    public Personaje getPersonaje(Long id) {
+    public Personaje getPersonaje(int id) {
         for (Personaje personaje : this.personajes) {
-            if (personaje.getId().equals(id)) {
+            if (personaje.getId()== id) {
                 return personaje;
             }
         }

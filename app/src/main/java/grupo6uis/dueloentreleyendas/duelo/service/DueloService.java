@@ -4,6 +4,7 @@ import java.util.List;
 
 import grupo6uis.dueloentreleyendas.duelo.domain.Personaje;
 import retrofit.Call;
+import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Path;
 
@@ -13,5 +14,5 @@ import retrofit.http.Path;
 public interface DueloService {
 
     @GET("nombre_personajes")
-    public Call<List<Personaje>> getPersonajes();
+    public Call<List<Personaje>> getPersonajes(Callback<List<Personaje>> dueloApp);
 }
