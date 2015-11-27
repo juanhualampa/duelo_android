@@ -7,11 +7,6 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <ListView
-        android:id="@+id/personajeslistView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp" />
 
     <TextView
                 android:layout_width="wrap_content"
@@ -33,8 +28,7 @@
                 android:id="@+id/idFiltrarEditText"
                 android:editable="true"
                 android:height="40dp"
-                android:layout_alignEnd="@+id/personajeslistView"
-                android:layout_toEndOf="@+id/idFiltrarLabel"
+        android:layout_toEndOf="@+id/idFiltrarLabel"
                 android:paddingBottom="10dp"></EditText>
 
 

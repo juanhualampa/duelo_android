@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ListView;
 
 import java.util.List;
-
 import grupo6uis.dueloentreleyendas.R;
 import grupo6uis.dueloentreleyendas.duelo.adapter.PersonajeAdapter;
 import grupo6uis.dueloentreleyendas.duelo.domain.Personaje;
