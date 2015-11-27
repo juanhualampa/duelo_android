@@ -78,8 +78,8 @@ public class SeleccionarPersonajeFragment extends ListFragment {
         super.onCreate(savedInstanceState);
         pedirPersonajes();
 
-        filtrarPersonajes();
-        verPersonajeElegido();
+//        filtrarPersonajes();
+//        verPersonajeElegido();
     }
 
     @Override
@@ -191,7 +191,8 @@ public class SeleccionarPersonajeFragment extends ListFragment {
         return dueloService;
     }
 
-
+/**
+ * TODO REVISAR AL FINAL, ES EL FILTRO DE LOS NOMBRES DE PERSONAJES
     private void filtrarPersonajes(){
         //para empezar
         EditText inputSearch = (EditText) getView().findViewById(R.id.idFiltrarEditText);
@@ -216,7 +217,10 @@ public class SeleccionarPersonajeFragment extends ListFragment {
             }
         });
     }
+ */
 
+/**
+ * TODO ESTO NO VA MASS
     private void verPersonajeElegido() {
         ListView listaPersonajes = (ListView) getView().findViewById(R.id.personajeslistView);
 
@@ -235,7 +239,7 @@ public class SeleccionarPersonajeFragment extends ListFragment {
             }
         });
     }
-
+*/
 
 
 }
