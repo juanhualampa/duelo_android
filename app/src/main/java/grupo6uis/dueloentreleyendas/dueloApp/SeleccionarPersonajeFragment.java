@@ -21,7 +21,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import javax.security.auth.callback.Callback;
 
 import grupo6uis.dueloentreleyendas.R;
 import grupo6uis.dueloentreleyendas.duelo.adapter.PersonajeAdapter;

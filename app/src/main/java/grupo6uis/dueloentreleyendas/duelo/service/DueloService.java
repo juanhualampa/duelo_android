@@ -6,7 +6,6 @@ import grupo6uis.dueloentreleyendas.duelo.domain.Personaje;
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.http.GET;
-import retrofit.http.Path;
 
 /**
  * Created by luciano on 26/11/15.
@@ -15,4 +14,8 @@ public interface DueloService {
 
     @GET("nombre_personajes")
     public Call<List<Personaje>> getPersonajes(Callback<List<Personaje>> dueloApp);
+
+    @GET("/descripcion_personaje/1/{PersonajeId}")
+    void getCaracteristicasPersonaje(@retrofit.http.Path("PersonajeId") String id, Callback<Personaje> callback);
+
 }
