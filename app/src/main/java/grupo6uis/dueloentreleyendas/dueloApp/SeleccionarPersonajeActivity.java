@@ -2,35 +2,8 @@ package grupo6uis.dueloentreleyendas.dueloApp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
-
-import java.util.List;
-
 import grupo6uis.dueloentreleyendas.R;
-import grupo6uis.dueloentreleyendas.duelo.adapter.PersonajeAdapter;
-import grupo6uis.dueloentreleyendas.duelo.domain.Personaje;
-import grupo6uis.dueloentreleyendas.duelo.repo.RepoDuelo;
-import grupo6uis.dueloentreleyendas.duelo.service.DueloService;
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-import retrofit.Response;
-import retrofit.Retrofit;
 
 /**
  * An activity representing a list of Personajes. This activity

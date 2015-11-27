@@ -1,32 +1,19 @@
 package grupo6uis.dueloentreleyendas.dueloApp;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.v4.app.ListFragment;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.List;
-
 
 import grupo6uis.dueloentreleyendas.R;
 import grupo6uis.dueloentreleyendas.duelo.adapter.PersonajeAdapter;
 import grupo6uis.dueloentreleyendas.duelo.domain.Personaje;
-import grupo6uis.dueloentreleyendas.duelo.repo.RepoDuelo;
 import grupo6uis.dueloentreleyendas.duelo.service.DueloService;
+import grupo6uis.dueloentreleyendas.duelo.service.DueloServiceInstance;
 import retrofit.Response;
 import retrofit.Retrofit;
 
@@ -48,8 +35,6 @@ public class SeleccionarPersonajeFragment extends ListFragment {
      * The current activated item position. Only used on tablets.
      */
     private int mActivatedPosition = ListView.INVALID_POSITION;
-
-    public RepoDuelo repo;
 
     public interface Callbacks {
         void onItemSelected(String id);
@@ -153,13 +138,10 @@ public class SeleccionarPersonajeFragment extends ListFragment {
         mActivatedPosition = position;
     }
 
-
-
-
-
     //de nuevo
     private void pedirPersonajes() {
-        DueloService dueloService = createDueloService();
+        DueloService dueloService = DueloServiceInstance.createDueloService();
+        Log.i("CONECTION", "PUDE CONECTARME AL SERVICE");
         dueloService.getPersonajes(new retrofit.Callback<List<Personaje>>() {
             @Override
             public void onResponse(Response<List<Personaje>> response, Retrofit retrofit) {
@@ -179,16 +161,6 @@ public class SeleccionarPersonajeFragment extends ListFragment {
         setListAdapter(new PersonajeAdapter(getActivity(), libros));
     }
 
-    private DueloService createDueloService() {
-        //MMM código repetido, habría que modificar esto no?
-        String SERVER_IP = "10.0.2.2"; //esta ip se usa para comunicarse con mi localhost en el emulador de Android Studio
-        String SERVER_IP_GENY = "192.168.56.1";//esta ip se usa para comunicarse con mi localhost en el emulador de Genymotion
-        String API_URL = "http://"+ SERVER_IP_GENY +":9000";
-
-        Retrofit restAdapter = new Retrofit.Builder().baseUrl(API_URL).build();
-        DueloService dueloService = restAdapter.create(DueloService.class);
-        return dueloService;
-    }
 
 /**
  * TODO REVISAR AL FINAL, ES EL FILTRO DE LOS NOMBRES DE PERSONAJES

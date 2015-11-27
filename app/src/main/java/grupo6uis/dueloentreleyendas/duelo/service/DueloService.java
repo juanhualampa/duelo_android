@@ -13,9 +13,17 @@ import retrofit.http.GET;
 public interface DueloService {
 
     @GET("nombre_personajes")
-    public Call<List<Personaje>> getPersonajes(Callback<List<Personaje>> dueloApp);
+    public Call<List<Personaje>> getPersonajes(Callback<List<Personaje>> callback);
 
     @GET("/descripcion_personaje/1/{PersonajeId}")
     void getCaracteristicasPersonaje(@retrofit.http.Path("PersonajeId") String id, Callback<Personaje> callback);
 
+    @GET("/estadisticas/1/{PersonajeId}")
+    void getEstadisticasPersonaje(@retrofit.http.Path("PersonajeId") String id, Callback<Personaje> callback);
+
+
 }
+
+
+
+

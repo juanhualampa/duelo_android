@@ -1,23 +1,15 @@
 package grupo6uis.dueloentreleyendas.dueloApp;
 
-import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import java.util.List;
-
 import grupo6uis.dueloentreleyendas.R;
-import grupo6uis.dueloentreleyendas.duelo.adapter.PersonajeAdapter;
 import grupo6uis.dueloentreleyendas.duelo.domain.Personaje;
 import grupo6uis.dueloentreleyendas.duelo.service.DueloService;
+import grupo6uis.dueloentreleyendas.duelo.service.DueloServiceInstance;
 import retrofit.Response;
 import retrofit.Retrofit;
 
@@ -39,10 +31,8 @@ public class PersonajeSeleccionadoFragment extends Fragment {
         }
     }
 
-
-
     private void pedirDatosPesonaje(String libroId) {
-        DueloService dueloService = createDueloService();
+        DueloService dueloService = DueloServiceInstance.createDueloService();
         dueloService.getCaracteristicasPersonaje(libroId,new retrofit.Callback<Personaje>() {
             @Override
             public void onResponse(Response<Personaje> response, Retrofit retrofit) {
@@ -62,17 +52,6 @@ public class PersonajeSeleccionadoFragment extends Fragment {
        //setListAdapter(new PersonajeAdapter(getActivity(), personaje));
     }
 
-
-    private DueloService createDueloService() {
-        //MMM código repetido, habría que modificar esto no?
-        String SERVER_IP = "10.0.2.2"; //esta ip se usa para comunicarse con mi localhost en el emulador de Android Studio
-        String SERVER_IP_GENY = "192.168.56.1";//esta ip se usa para comunicarse con mi localhost en el emulador de Genymotion
-        String API_URL = "http://"+ SERVER_IP_GENY +":9000";
-
-        Retrofit restAdapter = new Retrofit.Builder().baseUrl(API_URL).build();
-        DueloService dueloService = restAdapter.create(DueloService.class);
-        return dueloService;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
